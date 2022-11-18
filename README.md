@@ -7,7 +7,7 @@ https://github.com/neo4j-contrib/neo4j-helm/tools/backup - tool supports only up
 I have added logic to upload backup to OCI Object storage
 
 Requirement:
-1. OCI-CLI config, private key
+## OCI-CLI (files: config, private key)
  ### Configure an OCI-CLI environment
 The OCI-CLI environment must be activated and configured for use. This includes creating an appropriate OCI configuration file and populating that file with information about the target OCI account.
 
@@ -56,7 +56,21 @@ On success, a set of keys is generated in the ~/.oci subdirectory. You can verif
  - Okta recommends that you don't store the passphrase. 
 
 Steps:
-1.
+1. Copy following files contents fro ~/.oci/Config to oci-secret and ~/.oci/oci_api_key.pem(private generated above) to ocikey
+2. Set secrets in OCI k8s cluster:
+example: 
+> kubectl --context jayanth.sagar-dev-k8s-cluster -n develop-sts create secret generic neo4j-oci-credentials --from-file=credentials=oci-secret
+> kubectl --context jayanth.sagar-dev-k8s-cluster -n develop-sts create secret generic oickey --from-file=pemkey=ocikey
+3. Run helm install to set cronjob for daily backups.
+> helm upgrade --install dev-neo4j-backup . --set neo4jaddr=neo4j-cluster-neo4j.develop-sts.svc:6362 --set bucket=dev-neo4j-backups --set namespace=smartcloud --set database="neo4j\,system" --set cloudProvider=oci --set secretName=neo4j-oci-credentials --set keyName=ocikey --set jobSchedule="0 */12 * * *" --namespace develop-sts  --kubeconfig ~/.kube/config --kube-context jayanth.sagar-dev-k8s-cluster
+4. To perform a current DB backup.
+> kubectl --context jayanth.sagar-dev-k8s-cluster -n develop-sts create job --from=cronjob/dev-neo4j-backup-job neo4j-hot-backup
+Cronjob runs once for every 12hours, if we want to collect backup at the moment then use above command 
+5. check the cronjob
+> kubectl --context jayanth.sagar-dev-k8s-cluster -n develop-sts get cronjob
+6. check running jobs
+> kubectl --context jayanth.sagar-dev-k8s-cluster -n develop-sts get job
+
 
 Documentation:
 https://developer.oracle.com/learn/technical-articles/oci-cli
