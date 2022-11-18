@@ -7,6 +7,7 @@ https://github.com/neo4j-contrib/neo4j-helm/tools/backup - tool supports only up
 I have added logic to upload backup to OCI Object storage
 
 Requirement:
+## Important - Use the same version of neo4j running in your cluster (Update the same in Dockerfile)[Dockerfile](neo4j-helm-oci-backup-tool/Dockerfile)
 ## OCI-CLI (files: config, private key)
  ### Configure an OCI-CLI environment
 The OCI-CLI environment must be activated and configured for use. This includes creating an appropriate OCI configuration file and populating that file with information about the target OCI account.
