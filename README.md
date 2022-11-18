@@ -57,7 +57,7 @@ On success, a set of keys is generated in the ~/.oci subdirectory. You can verif
  - Enter y or no to the prompt asking about whether to store the passphrase.
  - Okta recommends that you don't store the passphrase. 
 
-Steps:
+## config Steps:
 1. Copy following files contents to current directory from ~/.oci/Config to oci-secret and ~/.oci/oci_api_key.pem(private generated above) to ocikey
 2. Set secrets in OCI k8s cluster:
 example: 
