@@ -1,4 +1,4 @@
-image: 848973796054.dkr.ecr.eu-central-1.amazonaws.com/appknit-infra-automation
+image: jayanthsagar/neo4j-helm-backup:latest
 imageTag: neo4j-backup
 podLabels: {}
 podAnnotations: {}
