@@ -1,4 +1,4 @@
-image: jayanthsagar/neo4j-helm-backup:latest
+image: 848973796054.dkr.ecr.eu-central-1.amazonaws.com/appknit-infra-automation
 imageTag: neo4j-backup
 podLabels: {}
 podAnnotations: {}
@@ -7,12 +7,13 @@ neo4jaddr: holder-neo4j.default.svc.cluster.local:6362
 # bucket: azure-storage-container
 bucket: gs://test-neo4j
 database: neo4j,system
-#namespace needed for OCI
+#namespace needed for OCI only
 namespace: smartns
 # cloudProvider can be either gcp, aws, or azure
 cloudProvider: gcp
 # set secretName to NULL if using workload-identity in gcp
 secretName: "neo4j-gcp-credentials"
+#keyName needed for OCI only
 keyName: "key.pem"
 pageCache: 2G
 heapSize: 2G
