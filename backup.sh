@@ -88,9 +88,9 @@ function cloud_copy() {
     fi
     ;;
   oci)
-    /root/bin/oci os object put -ns $NAMESPACE -bn $BUCKET --file $backup_path --name "${database}/${BACKUP_SET}.tar.gz" --force --debug
+    /root/bin/oci os object put -ns $NAMESPACE -bn $BUCKET --file $backup_path --name "${database}/${backup_path}" --force
     if [ "${artifact_type}" = "backup" ]; then
-      /root/bin/oci os object put -ns $NAMESPACE -bn $BUCKET --file $backup_path --name "${database}/${LATEST_POINTER}" --force --debug
+      /root/bin/oci os object put -ns $NAMESPACE -bn $BUCKET --file $backup_path --name "${database}/${LATEST_POINTER}" --force
     fi
     ;;
   gcp)
