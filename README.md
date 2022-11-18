@@ -4,10 +4,10 @@ backup neo4j to OCI object storage
 Modified Dockerfile, backup.sh script
 https://github.com/neo4j-contrib/neo4j-helm/tools/backup - tool supports only uploading to AWS|GCP|Azure
 
-I have added logic to upload backup to OCI Object storage
+I have added logic to upload backup to OCI Object storage - > oci os object put -ns <namespace> -bn <bucketName> --file <fileName> 
 
 Requirement:
-## Important - Use the same version of neo4j running in your cluster (Update the same in Dockerfile)[Dockerfile](Dockerfile)
+## Important - Use the same version of neo4j running in your cluster (Update the same in Dockerfile)[Dockerfile](Dockerfile) using neo4j:4.2.7-enterprise
 ## OCI-CLI (files: config, private key)
  ### Configure an OCI-CLI environment
 The OCI-CLI environment must be activated and configured for use. This includes creating an appropriate OCI configuration file and populating that file with information about the target OCI account.
