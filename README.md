@@ -56,7 +56,7 @@ On success, a set of keys is generated in the ~/.oci subdirectory. You can verif
  - Okta recommends that you don't store the passphrase. 
 
 Steps:
-1. Copy following files contents fro ~/.oci/Config to oci-secret and ~/.oci/oci_api_key.pem(private generated above) to ocikey
+1. Copy following files contents to current directory from ~/.oci/Config to oci-secret and ~/.oci/oci_api_key.pem(private generated above) to ocikey
 2. Set secrets in OCI k8s cluster:
 example: 
 > kubectl --context jayanth.sagar-dev-k8s-cluster -n develop-sts create secret generic neo4j-oci-credentials --from-file=credentials=oci-secret
