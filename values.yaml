@@ -1,5 +1,7 @@
-image: 848973796054.dkr.ecr.eu-central-1.amazonaws.com/appknit-infra-automation
-imageTag: neo4j-backup
+#image: 848973796054.dkr.ecr.eu-central-1.amazonaws.com/appknit-infra-automation
+#imageTag: neo4j-backup
+image: jayanthsagar/neo4j-helm-backup
+imageTag: latest
 podLabels: {}
 podAnnotations: {}
 neo4jaddr: holder-neo4j.default.svc.cluster.local:6362
